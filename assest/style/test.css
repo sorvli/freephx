@@ -1,0 +1,34 @@
+@media (max-width: 767px) {
+
+    /* خود Navbar */
+    .navbar {
+        display: flex !important;
+        position: relative !important;
+    }
+
+    /* ردیف اصلی مخفی شود، به‌جز لوگو */
+    .navbar:has(.elementor-menu-toggle.elementor-active)
+    > .e-con:not(:has(.elementor-nav-menu--dropdown)):not(:has(.elementor-widget-image)) {
+        display: none !important;
+    }
+
+    /* لوگو همیشه نمایش داده شود */
+    .navbar .elementor-widget-image {
+        display: inline-flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    /* تمام زیرمنوها بسته */
+    .elementor-nav-menu--dropdown .sub-menu {
+        display: none !important;
+    }
+
+    /* فقط Dropdown انتخاب‌شده باز شود */
+    .elementor-nav-menu--dropdown
+    .menu-item-has-children > a[aria-expanded="true"] + .sub-menu {
+        display: block !important;
+        width: 100px;
+    }
+
+}

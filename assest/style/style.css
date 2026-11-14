@@ -1,0 +1,546 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap');
+
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css');
+
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@v4.0.5/dist/font-face.css');
+
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css');
+
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/gandom-font@v0.8/dist/font-face.css');
+
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/parastoo-font@v2.0.1/dist/font-face.css');
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+* {
+    font-family: Vazirmatn, "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+canvas {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 0 !important;
+    display: block !important;
+    pointer-events: none;
+}
+
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-content {
+    text-align: center;
+    color: #F4EEFF;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 3px solid rgba(18, 84, 78, 0.35);
+    border-top: 3px solid rgba(244, 238, 255, 0.08);
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+    margin: 0 auto 20px;
+}
+
+.loader-content p {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    opacity: 0.85;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 0 20px;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(18, 84, 78, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 0 0 18px 18px;
+    border: 1px solid rgba(244, 238, 255, 0.08);
+    border-top: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    padding: 0 28px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo img {
+    transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+    transform: scale(1.08);
+}
+
+.white-logo {
+    filter: brightness(0) invert(1);
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row-reverse;
+    list-style: none;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #F4EEFF;
+    font-size: 15.5px;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.nav-links li a i {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+.nav-links li a:hover {
+    background: rgba(244, 238, 255, 0.12);
+    color: #fff;
+}
+
+.nav-links li a:hover i {
+    opacity: 1;
+}
+
+.nav-links li a.active {
+    background: rgba(0, 255, 204, 0.15);
+    color: #00ffcc;
+}
+
+.menu-btn {
+    display: none;
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    background-color: transparent;
+}
+
+
+@media (max-width: 629px) {
+    .nav-links {
+        display: none;
+    }
+
+    .menu-btn {
+        display: flex;
+    }
+
+    .nav-links.show {
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
+        position: absolute ;
+        top: 90px;
+        right: 0;
+
+        background: rgba(18, 84, 78, 0.35);
+
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+
+        border-radius: 30px;
+        border: 1px solid rgba(244, 238, 255, 0.08);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .main-texts {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+}
+
+
+main {
+    position: relative;
+    z-index: 10;
+    padding-top: 220px;
+    margin-top: 5%;
+}
+
+.text {
+    color: #F4EEFF;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.vazir-font-title {
+    font-family: "Vazirmatn", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.vazir-font-p {
+    font-family: "Vazirmatn", sans-serif;
+}
+
+hr {
+    width: 200px;
+    height: 1.5px;
+    background-color: white;
+    border-radius: 20px;
+    margin: 20px auto;
+    border: none;
+}
+
+
+
+.phx-option {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 80px 40px;
+    text-align: center;
+
+}
+
+.phx-option section {
+    padding: 30px;
+    width: 370px;
+    color: white;
+    background: rgba(18, 84, 78, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 18px;
+    border: 1px solid rgba(244, 238, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.phx-option section:hover {
+    background: rgba(18, 84, 78, 0.432);
+    transform: scale(1.02);
+}
+
+.phx-option section p {
+    font-size: 17px;
+}
+
+.phx-option section h2 {
+    font-size: 26px;
+    padding-top: 30px;
+}
+
+
+.phx-option section i {
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+
+
+.phx-prices {
+    display: flex;
+    gap: 70px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 80px 40px;
+    text-align: center;
+
+}
+
+.phx-prices section {
+    padding: 30px;
+    width: 370px;
+    color: white;
+    background: rgba(18, 84, 78, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 18px;
+    border: 1px solid rgba(244, 238, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.phx-prices section:hover {
+    background: rgba(18, 84, 78, 0.432);
+    transform: scale(1.02);
+}
+
+.phx-prices section p {
+    font-size: 17px;
+}
+
+.phx-prices section h2 {
+    font-size: 26px;
+    padding-top: 30px;
+}
+
+.phx-prices section i {
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.phx-prices section:first-child i {
+    border: 2px solid rgba(255, 217, 0, 0.663);
+}
+
+.phx-prices section:last-child i {
+    border: 2px solid silver;
+}
+
+.phx-prices li {
+    margin: 30px;
+}
+
+.phx-prices a {
+    display: block;
+    margin-top: 40px;
+    padding: 8px 40px 8px 40px;
+    background-color: rgba(18, 84, 78, 0.35);
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+
+}
+
+.phx-prices a:hover {
+    background: rgba(18, 84, 78, 0.432);
+}
+
+
+footer {
+    position: relative;
+    z-index: 10;
+}
+
+.footer-container {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 50px;
+    height: 40px;
+    background: rgba(18, 84, 78, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 18px 18px 0 0;
+    border: 1px solid rgba(244, 238, 255, 0.08);
+    border-bottom: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    padding-top: 9px;
+}
+
+.footer-container p {
+    text-align: center;
+    color: #F4EEFF;
+}
+
+.footer-container i {
+    padding-left: 20px;
+    color: #F4EEFF;
+}
+
+
+.side-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: #F4EEFF;
+}
+
+
+.side-line::before,
+.side-line::after {
+    content: "";
+    height: 4px;
+    width: 30px;
+    background: #F4EEFF;
+    opacity: 1;
+    border-radius: 20px;
+}
+
+.arrowbtn {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    text-decoration: none;
+    animation: float 2s ease-in-out infinite;
+}
+
+#about a {
+    text-decoration: none;
+    color: #F4EEFF;
+}
+
+#about {
+    position: relative;
+    margin-top: 250px;
+    margin-bottom: 110px;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+.contact {
+    margin: 100px 0px 100px 0px;
+    display: flexbox;
+    position: relative;
+    z-index: 10;
+    color: white;
+    text-align: center;
+}
+
+.contact h2 {
+    padding-bottom: 10px;
+}
+
+.contact p:nth-child(2) {
+    padding-bottom: 30px;
+}
+
+
+.contact h2:nth-of-type(2) {
+    padding-top: 110px;
+}
+
+
+.contact .icon {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+}
+
+.contact-icon {
+    text-decoration: none;
+    color: #F4EEFF;
+    transition: color 0.5s ease;
+}
+
+.contact i {
+    font-size: 20px;
+}
+
+
+.contact-icon:hover {
+    color: #f4eeffaf;
+}
+
+.contact>a {
+    display: inline-flex;
+    margin-top: 30px;
+    padding: 8px 40px 8px 40px;
+    background-color: rgba(18, 84, 78, 0.593);
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.5s ease;
+}
+
+.contact>a:hover {
+    background-color: rgba(18, 84, 78, 0.31);
+}
+
+/* .topline-option{
+    display: flex;
+    margin: 0 auto;
+    margin-top: 100px;
+    width: 50%;
+    height: 1.5px;
+    background-color: white;
+} */
